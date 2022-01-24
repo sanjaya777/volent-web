@@ -1,1 +1,38 @@
-<p>home works!</p>
+<header>
+    <div class="container" >
+      <nav class="navbar navbar-expand-lg navbar-light">
+          <a routerLink=""><img src="./assets/volentLogo.jpg" width="70px" alt=""></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item"><a routerLink="" class="nav-link">Features</a></li>
+              <li class="nav-item"><a routerLink="" class="nav-link">Pricing</a></li>
+              <li class="nav-item"><a routerLink="" class="nav-link">About Us</a></li>
+              <li class="nav-item"><a routerLink="" class="nav-link"><button class="btn btn-success">Sign In</button></a></li>
+            </ul>
+          </div>
+      </nav>
+    </div>
+</header>
+
+<div class="wrapper">
+    <div class="card shadow p-3 col-md-4 col-sm-4 offset-md-1">
+        <div class="card-header text-center"><h3>Login</h3></div>
+        <div class="card-body">
+            <form autocomplete="off">
+                <div class="form-group d-flex">
+                  <i class="material-icons">account_circle</i>
+                  <input class="form-control" formControlName="username" placeholder="Username" required>
+                </div>
+                <div class="form-group d-flex">
+                  <i class="material-icons">lock</i>
+                  <input class="form-control" type="password" formControlName="password" placeholder="Password" required>
+                </div>
+                <input type="submit" value="Sign In" class="btn btn-success cta">
+            </form>
+        </div>
+    </div>
+</div>
+
