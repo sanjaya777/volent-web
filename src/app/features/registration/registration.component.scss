@@ -1,0 +1,63 @@
+.card {
+    margin: 50px auto !important;
+}
+
+.form-group {
+    column-gap: 20px;
+    margin: 50px 20px;
+}
+
+.cta {
+    margin: auto;
+    width: 50%;
+    justify-content: center;
+    display: block;
+}
+
+h3 {
+    font-size: calc(1.3rem + 0.6vw);
+}
+
+.form-control {
+    margin: 10px 0;
+}
+
+.error {
+    margin-top: -9px;
+}
+
+form>div {
+    width: 46%;
+    margin: 10px;
+    display: inline-grid;
+}
+
+form>div.form-check {
+    display: block;
+}
+
+form .button {
+    display: flex;
+    margin: auto;
+    gap: 10px;
+    width: 50%;
+    justify-content: center;
+}
+
+.mat-error {
+    font-size: smaller;
+}
+
+.card-header {
+    background-color: #fc8eac;
+}
+
+input[type=checkbox]:checked+label{
+    background: #fc8eac;
+}
+
+.form-check-input:checked {
+    background-color: #e033ab;
+    border-color: #e033ab;
+}
+
