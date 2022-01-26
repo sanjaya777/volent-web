@@ -37,3 +37,17 @@ header {
 h3 {
     font-size: calc(1.3rem + 0.6vw);
 }
+
+.card-header {
+    border-bottom: 4px solid #C33DB5;
+    padding: 20px;
+}
+
+.error {
+    margin-top: -54px;
+    margin-left: 65px;
+}
+
+.mat-error {
+    font-size: smaller;
+}

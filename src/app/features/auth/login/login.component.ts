@@ -9,6 +9,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
+  error = false;
+
   constructor(private router : Router,private fb: FormBuilder) {
     this.initializeForm();
    }
@@ -25,7 +27,13 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onSubmit(){
-    this.router.navigate(['dashboard']);
+  login() {
+    if (this.loginForm.valid) {
+      this.router.navigate(['dashboard']);
+    }
+  }
+
+  checkErrors() {
+    this.error = true;
   }
 }

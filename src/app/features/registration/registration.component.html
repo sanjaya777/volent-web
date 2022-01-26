@@ -1,11 +1,11 @@
 <div class="wrapper">
     <div class="card shadow p-3 col-md-6 col-sm-4 offset-md-1">
         <div class="card-header text-center"><h3>Create your account</h3></div>
-        <div class="card-body pt-5">
+        <div class="card-body pt-4">
 
             <mat-horizontal-stepper [linear]="isLinear" #stepper>
                 <mat-step [stepControl]="registerForm1">
-                    <form [formGroup]= "registerForm1" (ngSubmit)= "register()">
+                    <form [formGroup]= "registerForm1">
                         <ng-template matStepLabel>Personal Details</ng-template>
                         <div>
                           <label>
@@ -156,7 +156,7 @@
                         
                         <div>
                             <label>
-                            Confirm Password:
+                            Confirm password:
                             </label>
                             <input type="password" class="form-control" formControlName="confirmPassword" required>
                             <div class="error" *ngIf="registerForm1.controls['confirmPassword'].errors && registerForm1.controls['confirmPassword'].touched || error">
@@ -227,7 +227,7 @@
                         <div class="button pt-5">
                             <button mat-button matStepperPrevious class="btn btn-secondary cta">Back</button>
                             <button type="Reset" mat-button (click)="stepper.reset()" (click)="reset()" class="btn btn-secondary cta">Reset</button>
-                            <button mat-button (click)="submit()"  class="btn btn-success cta">Sign Up</button>
+                            <button mat-button (click)="register()"  class="btn btn-success cta">Sign Up</button>
                         </div>
                     </form>
                 </mat-step>

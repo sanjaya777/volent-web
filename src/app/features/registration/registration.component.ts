@@ -13,8 +13,6 @@ export class RegistrationComponent implements OnInit {
   emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$';
 
   isLinear = true;
-  firstFormGroup!: FormGroup;
-  secondFormGroup!: FormGroup;
   error = false;
 
   keyPressNumbers(event:any) {
@@ -32,14 +30,6 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit(): void {
     this.createRegisterForm();
-    this.firstFormGroup = this.formBuilder.group({
-      name: ['', Validators.required],
-      description: ['', Validators.required]
-    });
-    this.secondFormGroup = this.formBuilder.group({
-      amount: ['', Validators.required],
-      stock: ['', Validators.required]
-    });
   }
 
   createRegisterForm() {
@@ -66,11 +56,8 @@ export class RegistrationComponent implements OnInit {
     });
   }
 
-  register() {}
-
-  submit(){
-    console.log(this.firstFormGroup.value);
-    console.log(this.secondFormGroup.value);
+  register() {
+    if (this.registerForm1.valid && this.registerForm2.valid) {}
   }
 
   next() {

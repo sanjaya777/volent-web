@@ -44,12 +44,17 @@ form .button {
     justify-content: center;
 }
 
+form{
+    padding-top:20px;
+}
+
 .mat-error {
     font-size: smaller;
 }
 
 .card-header {
-    background-color: #fc8eac;
+    border-bottom: 4px solid #C33DB5;
+    padding: 20px;
 }
 
 input[type=checkbox]:checked+label{
