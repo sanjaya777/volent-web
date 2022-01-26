@@ -1,1 +1,14 @@
-<p>dashboard works!</p>
+<div class="wrapper">
+    <div class="wrapped-div">
+      <div class="tab-header">
+          <h2 [routerLink]="['/dashboard/upcoming']" routerLinkActive="active" >Upcoming Events</h2>
+          <h2 [routerLink]="['/dashboard/attended']" routerLinkActive="active" >Attended Events</h2>
+          <h2 [routerLink]="['/dashboard/my']" routerLinkActive="active" >My Events</h2>
+        </div>
+        <div class="row">
+          <div class="col-md-10 offset-md-1">
+              <router-outlet></router-outlet>
+          </div>
+        </div>
+    </div>
+  </div>

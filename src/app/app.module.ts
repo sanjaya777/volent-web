@@ -14,13 +14,15 @@ import {MatListModule} from '@angular/material/list';
 import { HomeComponent } from './features/home/home.component';
 import { RegistrationComponent } from './features/registration/registration.component';
 import { LoginComponent } from './features/auth/login/login.component';
+import { DashboardComponent } from './features/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     RegistrationComponent,
-    LoginComponent
+    LoginComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
