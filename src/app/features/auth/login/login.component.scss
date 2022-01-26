@@ -1,0 +1,39 @@
+header {
+    background: #c8cfd4;
+}
+
+.nav-item a{
+    margin-right: 20px;
+    color: black;
+    font-size: 120%;
+}  
+
+.nav-item a:hover{
+    color: #C33DB5;
+}  
+
+@media screen and (max-width: 500px) {
+    .ms-auto {
+        margin-left: 3% !important;
+    }
+}
+
+.card {
+    margin: 50px auto !important;
+}
+
+.form-group {
+    column-gap: 20px;
+    margin: 50px 20px;
+}
+
+.cta {
+    margin: auto;
+    width: 50%;
+    justify-content: center;
+    display: block;
+}
+
+h3 {
+    font-size: calc(1.3rem + 0.6vw);
+}
