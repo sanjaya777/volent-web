@@ -1,0 +1,238 @@
+<div class="wrapper">
+    <div class="card shadow p-3 col-md-6 col-sm-4 offset-md-1">
+        <div class="card-header text-center"><h3>Create your account</h3></div>
+        <div class="card-body pt-5">
+
+            <mat-horizontal-stepper [linear]="isLinear" #stepper>
+                <mat-step [stepControl]="registerForm1">
+                    <form [formGroup]= "registerForm1" (ngSubmit)= "register()">
+                        <ng-template matStepLabel>Personal Details</ng-template>
+                        <div>
+                          <label>
+                            First Name:
+                          </label>
+                          <input type="text" class="form-control" formControlName="firstName" required>
+                          <div class="error" *ngIf="registerForm1.controls['firstName'].errors && registerForm1.controls['firstName'].touched || error">
+                              <mat-error *ngIf="registerForm1.controls['firstName'].errors">First name is required.</mat-error>
+                          </div>
+                        </div>
+                        
+                        <div>
+                          <label>
+                            Last Name:
+                          </label>
+                            <input type="text" class="form-control" formControlName="lastName" required>
+                            <div class="error" *ngIf="registerForm1.controls['lastName'].errors && registerForm1.controls['lastName'].touched || error">
+                              <mat-error *ngIf="registerForm1.controls['lastName'].errors">Last name is required.</mat-error>
+                            </div>
+                        </div>
+                          
+                        <div>
+                          <label>
+                            Username:
+                          </label>
+                            <input type="text" class="form-control" formControlName="username" required>
+                            <div class="error" *ngIf="registerForm1.controls['username'].errors && registerForm1.controls['username'].touched || error">
+                              <mat-error *ngIf="registerForm1.controls['username'].errors">Username is required.</mat-error>
+                            </div>
+                        </div>
+                          
+                        <div>
+                          <label>
+                            Email:
+                          </label>
+                          <input type="text" class="form-control" formControlName="email" [pattern]=emailPattern required>
+                            <div class="error" *ngIf="registerForm1.controls['email'].errors && registerForm1.controls['email'].touched || error">
+                              <mat-error *ngIf="registerForm1.controls['email'].errors">Email is required</mat-error>
+                            </div>
+                            <div class="error" *ngIf="registerForm1.controls['email'].errors && registerForm1.controls['email'].touched">
+                                <mat-error  *ngIf="!registerForm1.controls['email'].errors.required">Invalid email</mat-error>
+                              </div>
+                        </div>
+
+                        <div>
+                            <label>
+                            NIC/Passport number:
+                            </label>
+                            <input type="text" class="form-control" formControlName="nicOrPassportNo" required>
+                            <div class="error" *ngIf="registerForm1.controls['nicOrPassportNo'].errors && registerForm1.controls['nicOrPassportNo'].touched || error">
+                                <mat-error *ngIf="registerForm1.controls['nicOrPassportNo'].errors">NIC/Passport number is required.</mat-error>
+                            </div>
+                        </div>
+            
+                        <div>
+                            <label>
+                            Nationality:
+                            </label>
+                            <input type="text" class="form-control" formControlName="nationality" required>
+                            <div class="error" *ngIf="registerForm1.controls['nationality'].errors && registerForm1.controls['nationality'].touched || error">
+                                <mat-error *ngIf="registerForm1.controls['nationality'].errors">Nationality is required</mat-error>
+                            </div>
+                        </div>
+                            
+                        <div>
+                            <label>
+                            Contact number:
+                            </label>
+                            <input type="text" (keypress)="keyPressNumbers($event)" class="form-control" formControlName="contactNo" required minlength="10" maxlength="10">
+                            <div class="error" *ngIf="registerForm1.controls['contactNo'].errors && registerForm1.controls['contactNo'].touched || error">
+                                <mat-error *ngIf="registerForm1.controls['contactNo'].errors">Contact number is required.</mat-error>
+                            </div>
+                            <div class="error" *ngIf="registerForm1.controls['contactNo'].errors && registerForm1.controls['contactNo'].touched">
+                                <mat-error  *ngIf="!registerForm1.controls['contactNo'].errors.required">Invalid contact number</mat-error>
+                            </div>
+                        </div>
+                            
+                        <div>
+                            <label>
+                            House number:
+                            </label>
+                            <input type="text" class="form-control" formControlName="houseNo" required>
+                            <div class="error" *ngIf="registerForm1.controls['houseNo'].errors && registerForm1.controls['houseNo'].touched || error">
+                                <mat-error *ngIf="registerForm1.controls['houseNo'].errors">House number is required</mat-error>
+                            </div>
+                        </div>
+            
+                        <div>
+                            <label>
+                            Lane:
+                            </label>
+                            <input type="text" class="form-control" formControlName="lane" required>
+                            <div class="error" *ngIf="registerForm1.controls['lane'].errors && registerForm1.controls['lane'].touched || error">
+                                <mat-error *ngIf="registerForm1.controls['lane'].errors">Lane is required</mat-error>
+                            </div>
+                        </div>
+            
+                        <div>
+                            <label>
+                            City:
+                            </label>
+                            <input type="text" class="form-control" formControlName="city" required>
+                            <div class="error" *ngIf="registerForm1.controls['city'].errors && registerForm1.controls['city'].touched || error">
+                                <mat-error *ngIf="registerForm1.controls['city'].errors">City is required</mat-error>
+                            </div>
+                        </div>
+            
+                        <div>
+                            <label>
+                            District:
+                            </label>
+                            <select class="form-control" aria-label="Default select example" formControlName="district" required>
+                            <option value="" selected disabled>-Select district-</option> 
+                            <option value="colombo">Colombo</option>
+                                <option value="gampaha">Gampaha</option>
+                            </select>
+                            <div class="error" *ngIf="registerForm1.controls['district'].errors && registerForm1.controls['district'].touched || error">
+                                <mat-error *ngIf="registerForm1.controls['district'].errors">District is required</mat-error>
+                            </div>
+                        </div>
+            
+                        <div>
+                            <label>
+                            Profession:
+                            </label>
+                            <select class="form-control" aria-label="Default select example" formControlName="profession">
+                                <option value="" selected disabled>-Select profession-</option>
+                                <option value="doctor">Doctor</option>
+                                <option value="engineer">Engineer</option>
+                            </select>
+                            <div class="error" *ngIf="registerForm1.controls['profession'].errors && registerForm1.controls['profession'].touched || error">
+                                <mat-error *ngIf="registerForm1.controls['profession'].errors">Profession is required</mat-error>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label>
+                            Password:
+                            </label>
+                            <input type="password" class="form-control" formControlName="password" required minlength="4">
+                            <div class="error" *ngIf="registerForm1.controls['password'].errors && registerForm1.controls['password'].touched || error">
+                                <mat-error *ngIf="registerForm1.controls['password'].errors">Password is required</mat-error>
+                            </div>
+                            <div class="error" *ngIf="registerForm1.controls['password'].errors && registerForm1.controls['password'].touched">
+                                <mat-error  *ngIf="!registerForm1.controls['password'].errors.required">Mininum 4 charactors needed</mat-error>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label>
+                            Confirm Password:
+                            </label>
+                            <input type="password" class="form-control" formControlName="confirmPassword" required>
+                            <div class="error" *ngIf="registerForm1.controls['confirmPassword'].errors && registerForm1.controls['confirmPassword'].touched || error">
+                                <mat-error *ngIf="registerForm1.controls['confirmPassword'].errors">Confirm password is required</mat-error>
+                            </div>
+                            <mat-error *ngIf="registerForm1.controls['confirmPassword'].touched && registerForm1.controls['password'].value != registerForm1.controls['confirmPassword'].value" class="error">Password must match</mat-error> 
+                        </div>
+                        
+                          <div class="button pt-5">
+                              <button mat-button matStepperNext class="btn btn-success cta" (click)="next()">Next</button>
+                          </div>
+                        </form>
+                </mat-step>
+
+                <!-- step 2 -->
+
+                <mat-step [stepControl]="registerForm2">
+                    <form [formGroup]= "registerForm2" (ngSubmit)= "register()">
+                        <ng-template matStepLabel>Interests</ng-template>
+                        Your interested area:
+                        <br/>
+                        <div>
+                          <input type="checkbox" class="btn-check" id="btn-check-1" autocomplete="off">
+                            <label class="btn btn-light" for="btn-check-1">Agricultural</label>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" class="btn-check" id="btn-check-2" autocomplete="off">
+                            <label class="btn btn-light" for="btn-check-2">Health</label>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" class="btn-check" id="btn-check-3" autocomplete="off">
+                            <label class="btn btn-light" for="btn-check-3">Educational</label>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" class="btn-check" id="btn-check-4" autocomplete="off">
+                            <label class="btn btn-light" for="btn-check-4">Wildlife protection</label>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" class="btn-check" id="btn-check-5" autocomplete="off">
+                            <label class="btn btn-light" for="btn-check-5">Environmental</label>
+                        </div>
+                        <br/><br/>
+                        I want to get notifications from:
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="notifications" id="radio1" checked>
+                            <label class="form-check-label" for="radio1">
+                              All events
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="notifications" id="radio2">
+                            <label class="form-check-label" for="radio2">
+                                Events happening near me
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="notifications" id="radio3">
+                            <label class="form-check-label" for="radio3">
+                                Events I’m interested on
+                            </label>
+                        </div>
+                        
+                        <div class="button pt-5">
+                            <button mat-button matStepperPrevious class="btn btn-secondary cta">Back</button>
+                            <button type="Reset" mat-button (click)="stepper.reset()" (click)="reset()" class="btn btn-secondary cta">Reset</button>
+                            <button mat-button (click)="submit()"  class="btn btn-success cta">Sign Up</button>
+                        </div>
+                    </form>
+                </mat-step>
+            </mat-horizontal-stepper>
+        </div>
+    </div>
+</div>
+ 

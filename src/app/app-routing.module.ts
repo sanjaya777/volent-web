@@ -12,16 +12,16 @@ const routes: Routes = [
     loadChildren: () => import('src/app/features/home/home-routing.module').then(m=>m.HomeRoutingModule)
   },
   {
-    path:'registration',
-    loadChildren: () => import('src/app/features/registration/registration-routing.module').then(m=>m.RegistrationRoutingModule)
-  },
-  {
     path:'login',
     loadChildren: () => import('src/app/features/auth/auth-routing.module').then(m=>m.AuthRoutingModule)
   },
   {
     path:'',
     loadChildren: () => import('src/app/layout/layout-routing.module').then(m=>m.LayoutRoutingModule)
+  },
+  {
+    path:'register',
+    loadChildren: () => import('src/app/features/registration/registration-routing.module').then(m=>m.RegistrationRoutingModule)
   }
 ];
 
