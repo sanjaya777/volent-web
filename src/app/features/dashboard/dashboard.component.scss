@@ -29,7 +29,7 @@
     font-size: 130%;
     font-weight: 600;
     display:inline-block;
-    padding: 10% 10% 1%;
+    padding: 7% 10% 1%;
     cursor: pointer;
     color: #8d9299;
     border-bottom: 2px solid #8d9299;
@@ -39,4 +39,23 @@
       outline: none;
   }
   
+button {
+  position: fixed;
+  right: 40px;
+  bottom: 40px;
+  background: #e033ab;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  color: white;
+}
+
+button:hover {
+  background: #C33DB5;
+  color:white;
+}
+
+.material-icons{
+  padding-top: 4px;
+}
   
