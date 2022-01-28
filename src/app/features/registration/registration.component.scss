@@ -1,5 +1,5 @@
 .card {
-    margin: 50px auto !important;
+    margin: 50px auto 20px!important;
 }
 
 .form-group {
@@ -64,5 +64,15 @@ input[type=checkbox]:checked+label{
 .form-check-input:checked {
     background-color: #e033ab;
     border-color: #e033ab;
+}
+
+.bottomLine {
+    justify-content: center;
+    display: flex;
+    padding-bottom: 50px;
+}
+
+a {
+    color: #e033ab;
 }
 
