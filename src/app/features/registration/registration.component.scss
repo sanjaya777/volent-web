@@ -58,7 +58,7 @@ form{
 }
 
 input[type=checkbox]:checked+label{
-    background: #fc8eac;
+    background: #f5c5ec;
 }
 
 .form-check-input:checked {
@@ -74,5 +74,14 @@ input[type=checkbox]:checked+label{
 
 a {
     color: #e033ab;
+}
+
+.cta.register, .cta.next {
+    background-color: #e033ab;
+    color: white;
+}
+
+.cta.back {
+    background-color: #ededed;
 }
 

@@ -166,7 +166,7 @@
                         </div>
                         
                           <div class="button pt-5">
-                              <button mat-button matStepperNext class="btn btn-success cta" (click)="next()">Next</button>
+                              <button mat-button matStepperNext class="btn cta next" (click)="next()">Next</button>
                           </div>
                         </form>
                 </mat-step>
@@ -225,9 +225,9 @@
                         </div>
                         
                         <div class="button pt-5">
-                            <button mat-button matStepperPrevious class="btn btn-secondary cta">Back</button>
+                            <button mat-button matStepperPrevious class="btn cta back">Back</button>
                             <button type="Reset" mat-button (click)="stepper.reset()" (click)="reset()" class="btn btn-secondary cta">Reset</button>
-                            <button mat-button (click)="register()"  class="btn btn-success cta">Sign Up</button>
+                            <button mat-button (click)="register()"  class="btn cta register">Sign Up</button>
                         </div>
                     </form>
                 </mat-step>
