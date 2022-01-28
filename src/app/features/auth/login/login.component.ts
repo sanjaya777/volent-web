@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/features/auth/auth.service';
+import { UserAuth } from 'src/app/core/models/user-auth.model';
+import { StorageService } from 'src/app/core/services/storage.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +14,10 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   error = false;
 
-  constructor(private router : Router,private fb: FormBuilder) {
+  constructor(private router : Router,
+    private fb: FormBuilder,
+    private authService:AuthService,
+    private storageService:StorageService) {
     this.initializeForm();
    }
 
@@ -29,7 +35,16 @@ export class LoginComponent implements OnInit {
 
   login() {
     if (this.loginForm.valid) {
-      this.router.navigate(['dashboard']);
+      let user:UserAuth = { Username: this.loginForm.value.username, Password: this.loginForm.value.password }
+      this.authService.authenticateUser(user).subscribe(
+        data=>{
+          if(data && data == true){
+            this.storageService.store("IsAuthenticated",true);
+            this.router.navigate(['dashboard']);
+          }
+        }
+      )
+      
     }
   }
 

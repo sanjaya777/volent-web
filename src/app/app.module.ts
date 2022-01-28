@@ -15,6 +15,7 @@ import { HomeComponent } from './features/home/home.component';
 import { RegistrationComponent } from './features/registration/registration.component';
 import { LoginComponent } from './features/auth/login/login.component';
 import { DashboardComponent } from './features/dashboard/dashboard.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { DashboardComponent } from './features/dashboard/dashboard.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    SharedModule,
     LayoutModule,
     ReactiveFormsModule,
     MatFormFieldModule,
