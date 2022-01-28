@@ -4,6 +4,7 @@
 .topbar {
     position: fixed;
     z-index: 50;
+    padding: 35px;
     transition: 0.2s ease-in;
     box-shadow: 1px 0px 7px rgba(0, 0, 0, 0.05);
     background: #fff !important;
@@ -90,4 +91,15 @@
   .logo{
       width: 64px;
       height: 64px;
+  }
+
+  .navbar-expand-md .navbar-collapse {
+    display: inline-grid !important;
+    margin-right: 20px;
+    float: right;
+  }
+
+  .nav-link {
+    color: black;
+    font-weight: bold;
   }

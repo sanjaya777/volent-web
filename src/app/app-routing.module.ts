@@ -41,6 +41,10 @@ const routes: Routes = [
       {path: 'my', component: MyEventsComponent}
     ]
   },
+  {
+    path:'create-event',
+    loadChildren: () => import('src/app/features/event/event-routing.module').then(m=>m.EventRoutingModule)
+  },
 ];
 
 @NgModule({

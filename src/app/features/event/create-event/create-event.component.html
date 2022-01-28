@@ -1,0 +1,123 @@
+<div class="wrapper">
+    <div class="wrapped-div">
+        <div class="card shadow p-3 col-md-6 col-sm-4 offset-md-1">
+            <div class="card-header text-center"><h3>Create your event</h3></div>
+            <div class="card-body pt-4">
+                <form [formGroup]= "createEventForm" autocomplete="off" (ngSubmit)="createEvent()">
+                    <div>
+                        <label>
+                          Event Name:
+                        </label>
+                        <input type="text" class="form-control" formControlName="eventName" required>
+                        <div class="error" *ngIf="createEventForm.controls['eventName'].errors && createEventForm.controls['eventName'].touched || error">
+                            <mat-error *ngIf="createEventForm.controls['eventName'].errors">Event name is required.</mat-error>
+                        </div>
+                    </div>
+                      
+                    <div>
+                        <label>
+                          Description:
+                        </label>
+                          <input type="text" class="form-control" formControlName="description" required>
+                          <div class="error" *ngIf="createEventForm.controls['description'].errors && createEventForm.controls['description'].touched || error">
+                            <mat-error *ngIf="createEventForm.controls['description'].errors">Description is required.</mat-error>
+                          </div>
+                    </div>
+
+                    <div>
+                        <label>
+                          Location:
+                        </label>
+                          <input type="text" class="form-control" formControlName="location" required>
+                          <div class="error" *ngIf="createEventForm.controls['location'].errors && createEventForm.controls['location'].touched || error">
+                            <mat-error *ngIf="createEventForm.controls['location'].errors">Location is required.</mat-error>
+                          </div>
+                    </div>
+
+                    <div>
+                        <label>
+                          Banner:
+                        </label>
+                          <input type="text" class="form-control" formControlName="banner" required>
+                          <div class="error" *ngIf="createEventForm.controls['banner'].errors && createEventForm.controls['banner'].touched || error">
+                            <mat-error *ngIf="createEventForm.controls['banner'].errors">Banner is required.</mat-error>
+                          </div>
+                    </div>
+
+                    <div>
+                        <label>
+                        District:
+                        </label>
+                        <select class="form-control" aria-label="Default select example" formControlName="district" required>
+                        <option value="" selected disabled>-Select district-</option> 
+                        <option value="colombo">Colombo</option>
+                            <option value="gampaha">Gampaha</option>
+                        </select>
+                        <div class="error" *ngIf="createEventForm.controls['district'].errors && createEventForm.controls['district'].touched || error">
+                            <mat-error *ngIf="createEventForm.controls['district'].errors">District is required</mat-error>
+                        </div>
+                    </div>
+                    <br/><br/>
+
+                    Interest types:
+                    <br/>
+                    <div>
+                      <input type="checkbox" class="btn-check" id="btn-check-1" autocomplete="off">
+                        <label class="btn btn-light" for="btn-check-1">Agricultural</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" class="btn-check" id="btn-check-2" autocomplete="off">
+                        <label class="btn btn-light" for="btn-check-2">Health</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" class="btn-check" id="btn-check-3" autocomplete="off">
+                        <label class="btn btn-light" for="btn-check-3">Educational</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" class="btn-check" id="btn-check-4" autocomplete="off">
+                        <label class="btn btn-light" for="btn-check-4">Wildlife protection</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" class="btn-check" id="btn-check-5" autocomplete="off">
+                        <label class="btn btn-light" for="btn-check-5">Environmental</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" class="btn-check" id="btn-check-6" autocomplete="off">
+                        <label class="btn btn-light" for="btn-check-6">Others</label>
+                    </div>
+                    <br/><br/>
+                        Event status:
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="status" id="radio1" checked>
+                            <label class="form-check-label" for="radio1">
+                              Upcoming
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="status" id="radio2">
+                            <label class="form-check-label" for="radio2">
+                                On going
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="status" id="radio3">
+                            <label class="form-check-label" for="radio3">
+                                Past
+                            </label>
+                        </div>
+                    <div class="button">
+                        <button type="Reset" mat-button (click)="reset()" class="btn btn-secondary cta">Reset</button>
+                    <input type="submit" value="Create" (click)="checkErrors()" class="btn cta create">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+  

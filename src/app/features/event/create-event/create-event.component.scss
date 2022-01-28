@@ -1,0 +1,93 @@
+header {
+    background: #c8cfd4;
+}
+
+.nav-item a{
+    margin-right: 20px;
+    color: black;
+    font-size: 120%;
+}  
+
+.nav-item a:hover{
+    color: #C33DB5;
+}  
+
+@media screen and (max-width: 500px) {
+    .ms-auto {
+        margin-left: 3% !important;
+    }
+}
+
+.card {
+    margin: 0 515px !important;
+}
+
+.form-group {
+    column-gap: 20px;
+    margin: 50px 20px;
+}
+
+.cta {
+    margin: auto;
+    width: 50%;
+    justify-content: center;
+    display: block;
+    color: white;
+}
+
+.cta.create {
+    background-color: #e033ab;
+}
+
+h3 {
+    font-size: calc(1.3rem + 0.6vw);
+}
+
+.card-header {
+    border-bottom: 4px solid #C33DB5;
+    padding: 20px;
+}
+
+.mat-error {
+    font-size: smaller;
+}
+
+.wrapped-div {
+    padding-top: 110px;
+}
+
+.form-control {
+    margin: 10px 0;
+}
+
+form>div {
+    width: 46%;
+    margin: 10px;
+    display: inline-grid;
+}
+
+form>div.form-check {
+    display: block;
+}
+
+form .button {
+    display: flex;
+    margin: auto;
+    gap: 10px;
+    width: 50%;
+    justify-content: center;
+}
+
+.error {
+    margin-top: -9px;
+}
+
+input[type=checkbox]:checked+label{
+    background: #f5c5ec;
+}
+
+.form-check-input:checked {
+    background-color: #e033ab;
+    border-color: #e033ab;
+}
+
