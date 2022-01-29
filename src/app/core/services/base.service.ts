@@ -17,7 +17,9 @@ export class BaseService {
 
   post<T>(t: T|any, endpoint: string): Observable<T> {
     let apiUrl = environment.ApiUrl;//this.configurationService.getValue("ApiUrl");
-    return this._http.post<T>(apiUrl + endpoint, t);
+
+    const headers = { 'Content-Type': 'application/json', 'Accept': '*/*' };
+    return this._http.post<any>(apiUrl + endpoint, t, { headers });
   }
 
   update<T>(t: T|any, endpoint: string): Observable<T> {

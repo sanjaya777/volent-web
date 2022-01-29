@@ -1,25 +1,35 @@
 <aside class="left-sidebar">
 
-    <nav class="sidebar-nav">
-        <ul id="sidebarnav">
-            <!-- First level menu -->
-            <li class="sidebar-item" >
-                <a class="sidebar-link" placeholder="Right" [routerLink]="['/admin/usermgt']"><i class="pi pi-home"></i></a>
-            </li>
-            <!-- <li class="sidebar-item" *appAllowedAccess="'MenuHome'">
-                <a class="sidebar-link" *ngIf="roles.includes('Trainee') && (!roles.includes('Super Administrator') || !roles.includes('Administrator'))" [pTooltip]="getToolTip('Home')"  placeholder="Right"><i class="pi pi-home" [routerLink]="['/training/program/pillars']"></i></a>
-                <a class="sidebar-link" *ngIf="roles.includes('Super Administrator') || roles.includes('Administrator')" [pTooltip]="getToolTip('Learning Material')" placeholder="Right" [routerLink]="['/training/program/pillars']"><i class="pi pi-bars"></i></a>
-            </li>
-            <li class="sidebar-item" *appAllowedAccess="'MenuPendingEnrollments'">
-                <a class="sidebar-link"  [pTooltip]="getToolTip('Pending Enrollments')" placeholder="Right"><i class="pi pi-clock" [routerLink]="['/admin/pendingapproval']"></i></a>
-            </li>
-            <li class="sidebar-item" *appAllowedAccess="'MenuApprovedEnrollments'">
-                <a class="sidebar-link"  [pTooltip]="getToolTip('Approved Enrollments')" placeholder="Right"><i class="pi pi-id-card" [routerLink]="['/admin/approval']"></i></a>
-            </li>
-            <li class="sidebar-item" *appAllowedAccess="'MenuCalendar'">
-                <a class="sidebar-link"  [pTooltip]="getToolTip('Calendar')" placeholder="Right"><i class="pi pi-calendar" [routerLink]="['/calender']"></i></a>
-            </li> -->
-        </ul>
-    </nav>
+    <div class="container-fluid">
+        <div class="row flex-nowrap">
+            <div class="col-auto col-md-3 col-xl-2 px-sm-2 side">
+                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link align-middle">
+                                <i class="fs-4 bi-house"></i> <i class="material-icons">home</i>&nbsp;<span class="ms-1 d-none d-sm-inline">Home</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#submenu1" data-bs-toggle="collapse" class="nav-link align-middle">
+                                <i class="fs-4 bi-speedometer2"></i> <i class="material-icons">dashboard</i>&nbsp;<span class="ms-1 d-none d-sm-inline">Dashboard </span>&nbsp;&nbsp;<i class="material-icons">arrow_drop_down</i></a>
+                            <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+                                <li class="w-100">
+                                    <a href="dashboard/upcoming" class="nav-link"> <i class="material-icons">event</i>&nbsp;<span class="d-none d-sm-inline">Upcoming events</span> </a>
+                                </li>
+                                <li>
+                                    <a href="dashboard/attended" class="nav-link"> <i class="material-icons">event</i>&nbsp;<span class="d-none d-sm-inline">Attended events</span> </a>
+                                </li>
+                                <li>
+                                    <a href="dashboard/my" class="nav-link"> <i class="material-icons">event</i>&nbsp;<span class="d-none d-sm-inline">My events</span> </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </aside>

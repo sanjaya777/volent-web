@@ -19,7 +19,7 @@ header {
 }
 
 .card {
-    margin: 50px auto !important;
+    margin: 0 515px !important;
 }
 
 .form-group {
@@ -32,8 +32,11 @@ header {
     width: 50%;
     justify-content: center;
     display: block;
-    background-color: #e033ab;
     color: white;
+}
+
+.cta.create {
+    background-color: #e033ab;
 }
 
 h3 {
@@ -45,21 +48,46 @@ h3 {
     padding: 20px;
 }
 
-.error {
-    margin-top: -54px;
-    margin-left: 65px;
-}
-
 .mat-error {
     font-size: smaller;
 }
 
-.bottomLine {
-    justify-content: center;
-    display: flex;
-    padding-bottom: 50px;
+.wrapped-div {
+    padding-top: 110px;
 }
 
-a {
-    color: #e033ab;
+.form-control {
+    margin: 10px 0;
 }
+
+form>div {
+    width: 46%;
+    margin: 10px;
+    display: inline-grid;
+}
+
+form>div.form-check {
+    display: block;
+}
+
+form .button {
+    display: flex;
+    margin: auto;
+    gap: 10px;
+    width: 50%;
+    justify-content: center;
+}
+
+.error {
+    margin-top: -9px;
+}
+
+input[type=checkbox]:checked+label{
+    background: #f5c5ec;
+}
+
+.form-check-input:checked {
+    background-color: #e033ab;
+    border-color: #e033ab;
+}
+
