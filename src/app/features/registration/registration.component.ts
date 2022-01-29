@@ -4,6 +4,9 @@ import { InterestsDto } from 'src/app/core/models/interests-dto';
 import { RegistrationService } from 'src/app/features/registration/registration.service';
 import { DistrictList } from 'src/app/core/enums/district.enum';
 import { ProfessionList } from 'src/app/core/enums/profession.enum';
+import { UserDto } from 'src/app/core/models/user-dto.model';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -34,7 +37,7 @@ export class RegistrationComponent implements OnInit {
 
   
   
-  constructor(private formBuilder: FormBuilder, private registrationservice: RegistrationService) { 
+  constructor(private formBuilder: FormBuilder, private registrationservice: RegistrationService,private router : Router) { 
 
   }
 
@@ -65,7 +68,7 @@ export class RegistrationComponent implements OnInit {
 
     this.registerForm2 = this.formBuilder.group({
       interests: new FormArray([]),//['', Validators.required],
-      notifications: ['', Validators.required]
+      notifications: ['']
     });
   }
 
@@ -74,7 +77,45 @@ export class RegistrationComponent implements OnInit {
   }
 
   register() {
-    if (this.registerForm1.valid && this.registerForm2.valid) {}
+    if (this.registerForm1.valid && this.registerForm2.valid) {
+
+      let user:UserDto = this.getFormData();
+      this.registrationservice.registerUser(user).subscribe(
+        data=>{
+          this.router.navigate(['login']);
+        },
+        error=>{
+          
+        }
+      )
+      console.log(user);
+    }
+  }
+
+getFormData():UserDto
+  {
+    const personalInfoFormValues = this.registerForm1.value;
+    const interestsFormValues = this.registerForm2.value;
+    const selectedInterestIds: number[] = interestsFormValues.interests
+      .map((checked:any, i:any) => checked ? this.interests[i].interestId : null)
+      .filter((v:any) => v !== null);
+
+    return ({
+      Firstname : personalInfoFormValues.firstName,
+      LastName : personalInfoFormValues.lastName,
+      Username : personalInfoFormValues.username,
+      Email : personalInfoFormValues.email,
+      NIC : personalInfoFormValues.nicOrPassportNo,
+      Nationality : personalInfoFormValues.nationality,
+      ApartmentNo : personalInfoFormValues.houseNo,
+      PhoneNo : personalInfoFormValues.contactNo,
+      Lane : personalInfoFormValues.lane,
+      City : personalInfoFormValues.city,
+      District : personalInfoFormValues.district.value,
+      Profession : personalInfoFormValues.profession.value,
+      Password : personalInfoFormValues.password,
+      Interests : selectedInterestIds
+    } as UserDto);
   }
 
   next() {

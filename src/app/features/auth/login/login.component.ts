@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
       let user:UserAuth = { Username: this.loginForm.value.username, Password: this.loginForm.value.password }
       this.authService.authenticateUser(user).subscribe(
         data=>{
-          if(data && data == true){
+          if(data){
             this.storageService.store("IsAuthenticated",true);
             this.router.navigate(['dashboard']);
           }
