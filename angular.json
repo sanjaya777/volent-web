@@ -113,5 +113,8 @@
       }
     }
   },
-  "defaultProject": "volent-app"
+  "defaultProject": "volent-app",
+  "cli": {
+    "analytics": "5caf737f-dbd5-4ca2-84aa-f9765d4c739f"
+  }
 }
