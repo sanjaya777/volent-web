@@ -85,7 +85,7 @@ export class RegistrationComponent implements OnInit {
           this.router.navigate(['login']);
         },
         error=>{
-          
+
         }
       )
       console.log(user);
@@ -111,8 +111,8 @@ getFormData():UserDto
       PhoneNo : personalInfoFormValues.contactNo,
       Lane : personalInfoFormValues.lane,
       City : personalInfoFormValues.city,
-      District : personalInfoFormValues.district.value,
-      Profession : personalInfoFormValues.profession.value,
+      District : personalInfoFormValues.district.key.toString(),
+      Profession : personalInfoFormValues.profession.key.toString(),
       Password : personalInfoFormValues.password,
       Interests : selectedInterestIds
     } as UserDto);
