@@ -36,16 +36,6 @@
 
                     <div>
                         <label>
-                          Banner:
-                        </label>
-                          <input type="text" class="form-control" formControlName="banner" required>
-                          <div class="error" *ngIf="createEventForm.controls['banner'].errors && createEventForm.controls['banner'].touched || error">
-                            <mat-error *ngIf="createEventForm.controls['banner'].errors">Banner is required.</mat-error>
-                          </div>
-                    </div>
-
-                    <div>
-                        <label>
                         District:
                         </label>
                         <select class="form-control" aria-label="Default select example" formControlName="district" required>
@@ -57,6 +47,18 @@
                             <mat-error *ngIf="createEventForm.controls['district'].errors">District is required</mat-error>
                         </div>
                     </div>
+
+                    <div>
+                        <label>
+                          Banner:
+                        </label>
+                          <input #file type="file" class="form-control" accept='image/*' (change)="onFileChange($event)" lName="banner" required/>
+                          <div class="error" *ngIf="createEventForm.controls['banner'].errors && createEventForm.controls['banner'].touched || error">
+                            <mat-error *ngIf="createEventForm.controls['banner'].errors">Banner is required.</mat-error>
+                          </div>
+                          <img [src]="imageSrc" *ngIf="imageSrc" style=" width:200px">
+                    </div>
+
                     <br/><br/>
 
                     Interest types:
