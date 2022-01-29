@@ -10,6 +10,7 @@ export class CreateEventComponent implements OnInit {
 
   createEventForm!: FormGroup;
   error = false;
+  imageSrc!: string;
 
   constructor(private fb: FormBuilder) { 
     this.initializeForm();
@@ -31,7 +32,9 @@ export class CreateEventComponent implements OnInit {
   }
 
   createEvent() {
-    if (this.createEventForm.valid) {}
+    if (this.createEventForm.valid) {
+    }
+    // "this.createEventForm.value.banner" gives the image url as a string
   }
 
   checkErrors() {
@@ -40,6 +43,26 @@ export class CreateEventComponent implements OnInit {
 
   reset() {
     this.error = false;
+    this.imageSrc = "";
     this.createEventForm.reset();
+  }
+
+  onFileChange(event: any) {
+    const reader = new FileReader();
+     
+    if(event.target.files && event.target.files.length) {
+      const [file] = event.target.files;
+      reader.readAsDataURL(file);
+     
+      reader.onload = () => {
+    
+        this.imageSrc = reader.result as string;
+      
+        this.createEventForm.patchValue({
+          banner: reader.result
+        });
+      };
+    
+    }
   }
 }
