@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from '@angular/forms';
+import { InterestsDto } from 'src/app/core/models/interests-dto';
+import { RegistrationService } from 'src/app/features/registration/registration.service';
+import { DistrictList } from 'src/app/core/enums/district.enum';
+import { ProfessionList } from 'src/app/core/enums/profession.enum';
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -14,6 +17,9 @@ export class RegistrationComponent implements OnInit {
 
   isLinear = true;
   error = false;
+  interests: InterestsDto[] =[];
+  districts:any;
+  professions:any;
 
   keyPressNumbers(event:any) {
     var charCode = (event.which) ? event.which : event.keyCode;
@@ -25,11 +31,18 @@ export class RegistrationComponent implements OnInit {
       return true;
     }
   }
+
   
-  constructor(private formBuilder: FormBuilder) { }
+  
+  constructor(private formBuilder: FormBuilder, private registrationservice: RegistrationService) { 
+
+  }
 
   ngOnInit(): void {
     this.createRegisterForm();
+    this.getAllInterestsAreas();
+    this.districts = DistrictList;
+    this.professions = ProfessionList;
   }
 
   createRegisterForm() {
@@ -51,9 +64,13 @@ export class RegistrationComponent implements OnInit {
     });
 
     this.registerForm2 = this.formBuilder.group({
-      interests: ['', Validators.required],
+      interests: new FormArray([]),//['', Validators.required],
       notifications: ['', Validators.required]
     });
+  }
+
+  get interestFormArray() {
+    return this.registerForm2.controls.interests as FormArray;
   }
 
   register() {
@@ -69,4 +86,19 @@ export class RegistrationComponent implements OnInit {
     this.registerForm1.reset();
     this.registerForm2.reset();
   }
+
+  getAllInterestsAreas()
+  {
+    this.registrationservice.getAllInterestAreas().subscribe(
+      data=>{
+        this.interests = data;
+        this.addCheckboxesToForm();
+      }
+    )
+  }
+
+  private addCheckboxesToForm() {
+    this.interests.forEach(() => this.interestFormArray.push(new FormControl(false)));
+  }
+
 }

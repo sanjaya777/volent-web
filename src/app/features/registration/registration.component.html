@@ -119,8 +119,7 @@
                             </label>
                             <select class="form-control" aria-label="Default select example" formControlName="district" required>
                             <option value="" selected disabled>-Select district-</option> 
-                            <option value="colombo">Colombo</option>
-                                <option value="gampaha">Gampaha</option>
+                            <option *ngFor="let district of districts" [ngValue]="district">{{district.value}}</option>
                             </select>
                             <div class="error" *ngIf="registerForm1.controls['district'].errors && registerForm1.controls['district'].touched || error">
                                 <mat-error *ngIf="registerForm1.controls['district'].errors">District is required</mat-error>
@@ -133,8 +132,7 @@
                             </label>
                             <select class="form-control" aria-label="Default select example" formControlName="profession">
                                 <option value="" selected disabled>-Select profession-</option>
-                                <option value="doctor">Doctor</option>
-                                <option value="engineer">Engineer</option>
+                                <option *ngFor="let profession of professions" [ngValue]="profession">{{profession.value}}</option>
                             </select>
                             <div class="error" *ngIf="registerForm1.controls['profession'].errors && registerForm1.controls['profession'].touched || error">
                                 <mat-error *ngIf="registerForm1.controls['profession'].errors">Profession is required</mat-error>
@@ -178,29 +176,9 @@
                         <ng-template matStepLabel>Interests</ng-template>
                         Your interested area:
                         <br/>
-                        <div>
-                          <input type="checkbox" class="btn-check" id="btn-check-1" autocomplete="off">
-                            <label class="btn btn-light" for="btn-check-1">Agricultural</label>
-                        </div>
-
-                        <div>
-                            <input type="checkbox" class="btn-check" id="btn-check-2" autocomplete="off">
-                            <label class="btn btn-light" for="btn-check-2">Health</label>
-                        </div>
-
-                        <div>
-                            <input type="checkbox" class="btn-check" id="btn-check-3" autocomplete="off">
-                            <label class="btn btn-light" for="btn-check-3">Educational</label>
-                        </div>
-
-                        <div>
-                            <input type="checkbox" class="btn-check" id="btn-check-4" autocomplete="off">
-                            <label class="btn btn-light" for="btn-check-4">Wildlife protection</label>
-                        </div>
-
-                        <div>
-                            <input type="checkbox" class="btn-check" id="btn-check-5" autocomplete="off">
-                            <label class="btn btn-light" for="btn-check-5">Environmental</label>
+                        <div formArrayName="interests" *ngFor="let order of interestFormArray.controls; let i = index">
+                              <input type="checkbox" class="btn-check" [formControlName]="i" id="{{i}}"  autocomplete="off">
+                              <label class="btn btn-light" for="{{i}}">{{interests[i].category}}</label>
                         </div>
                         <br/><br/>
                         I want to get notifications from:
