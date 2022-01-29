@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from '@angular/forms';
+import { InterestsDto } from 'src/app/core/models/interests-dto';
+import { RegistrationService } from 'src/app/features/registration/registration.service';
+import { DistrictList } from 'src/app/core/enums/district.enum';
+import { ProfessionList } from 'src/app/core/enums/profession.enum';
+import { UserDto } from 'src/app/core/models/user-dto.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -14,6 +20,9 @@ export class RegistrationComponent implements OnInit {
 
   isLinear = true;
   error = false;
+  interests: InterestsDto[] =[];
+  districts:any;
+  professions:any;
 
   keyPressNumbers(event:any) {
     var charCode = (event.which) ? event.which : event.keyCode;
@@ -25,11 +34,18 @@ export class RegistrationComponent implements OnInit {
       return true;
     }
   }
+
   
-  constructor(private formBuilder: FormBuilder) { }
+  
+  constructor(private formBuilder: FormBuilder, private registrationservice: RegistrationService,private router : Router) { 
+
+  }
 
   ngOnInit(): void {
     this.createRegisterForm();
+    this.getAllInterestsAreas();
+    this.districts = DistrictList;
+    this.professions = ProfessionList;
   }
 
   createRegisterForm() {
@@ -51,13 +67,55 @@ export class RegistrationComponent implements OnInit {
     });
 
     this.registerForm2 = this.formBuilder.group({
-      interests: ['', Validators.required],
-      notifications: ['', Validators.required]
+      interests: new FormArray([]),//['', Validators.required],
+      notifications: ['']
     });
   }
 
+  get interestFormArray() {
+    return this.registerForm2.controls.interests as FormArray;
+  }
+
   register() {
-    if (this.registerForm1.valid && this.registerForm2.valid) {}
+    if (this.registerForm1.valid && this.registerForm2.valid) {
+
+      let user:UserDto = this.getFormData();
+      this.registrationservice.registerUser(user).subscribe(
+        data=>{
+          this.router.navigate(['login']);
+        },
+        error=>{
+
+        }
+      )
+      console.log(user);
+    }
+  }
+
+getFormData():UserDto
+  {
+    const personalInfoFormValues = this.registerForm1.value;
+    const interestsFormValues = this.registerForm2.value;
+    const selectedInterestIds: number[] = interestsFormValues.interests
+      .map((checked:any, i:any) => checked ? this.interests[i].interestId : null)
+      .filter((v:any) => v !== null);
+
+    return ({
+      Firstname : personalInfoFormValues.firstName,
+      LastName : personalInfoFormValues.lastName,
+      Username : personalInfoFormValues.username,
+      Email : personalInfoFormValues.email,
+      NIC : personalInfoFormValues.nicOrPassportNo,
+      Nationality : personalInfoFormValues.nationality,
+      ApartmentNo : personalInfoFormValues.houseNo,
+      PhoneNo : personalInfoFormValues.contactNo,
+      Lane : personalInfoFormValues.lane,
+      City : personalInfoFormValues.city,
+      District : personalInfoFormValues.district.key.toString(),
+      Profession : personalInfoFormValues.profession.key.toString(),
+      Password : personalInfoFormValues.password,
+      Interests : selectedInterestIds
+    } as UserDto);
   }
 
   next() {
@@ -69,4 +127,19 @@ export class RegistrationComponent implements OnInit {
     this.registerForm1.reset();
     this.registerForm2.reset();
   }
+
+  getAllInterestsAreas()
+  {
+    this.registrationservice.getAllInterestAreas().subscribe(
+      data=>{
+        this.interests = data;
+        this.addCheckboxesToForm();
+      }
+    )
+  }
+
+  private addCheckboxesToForm() {
+    this.interests.forEach(() => this.interestFormArray.push(new FormControl(false)));
+  }
+
 }
